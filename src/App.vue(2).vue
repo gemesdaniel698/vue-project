@@ -5,7 +5,6 @@
         <span>{{ stillLearning }}</span> - <span>{{ know }}</span>
       </div>
     </div>
-
     <div class="main-content">
       <button class="btn-left" @click="moveToStillLearning">Still learning</button>
       <div class="card">
