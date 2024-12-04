@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     keepPracticing() {
-      // További logika, például értékek növelése vagy animáció hozzáadása
       console.log("Keep practicing clicked");
     },
   },
