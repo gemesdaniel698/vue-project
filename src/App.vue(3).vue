@@ -1,6 +1,6 @@
 <template>
   <div class="editor">
-    <!-- Title Input -->
+
     <input 
       v-model="title" 
       type="text" 
@@ -8,7 +8,7 @@
       class="title-input" 
     />
 
-    <!-- Card List -->
+
     <div class="cards">
       <div 
         class="card" 
@@ -35,8 +35,6 @@
         </button>
       </div>
     </div>
-
-    <!-- Add New Card Button -->
     <button class="add-btn" @click="addCard">
       Add New Card
     </button>
@@ -49,7 +47,7 @@ export default {
     return {
       title: "",
       cards: [
-        { term: "", definition: "" }, // Kezdeti kártya
+        { term: "", definition: "" }, 
       ],
     };
   },
