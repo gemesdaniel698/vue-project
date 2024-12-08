@@ -2,11 +2,11 @@
   <div class="app">
     <!---  <b-button>I am a Button</b-button>-->
 
-    <!--
+    
     <button id="myButton" class="btn btn-primary" onclick="alert('Button clicked!')">
     Click Me!
     </button>
--->
+
 
     <div class="score-container">
       <div class="score">
