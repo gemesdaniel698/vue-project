@@ -24,6 +24,7 @@
 
 <script>
 export default {
+  name: "PracticeWindow",
   data() {
     return {
       stillLearning: 3,

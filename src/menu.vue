@@ -1,11 +1,11 @@
 <template>
-  <div id="app" class="container py-3">
+  <div id="app" class="container py-3"  v-if="$route.name !== 'PracticeWindow'">
     <!-- Title Section -->
     <div class="d-flex justify-content-between align-items-center mb-3">
       <button class="btn btn-primary btn-sm">Smart Recall</button>
       <button class="btn btn-danger btn-sm">x</button>
     </div>
-
+    
     <!-- Search Bar -->
     <div class="mb-3">
       <input 
@@ -18,9 +18,10 @@
 
     <!-- Card Container -->
     <div class="row g-3">
-      <div 
+      <router-link 
         v-for="card in filteredCards" 
         :key="card.id" 
+        :to="{ name: 'PracticeWindow', params: { id: card.id } }"
         class="col-6"
       >
         <div class="card text-center shadow-sm">
@@ -28,7 +29,7 @@
             <p class="card-text">{{ card.title }}</p>
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
 
     <!-- Navigation Bar -->
@@ -41,6 +42,7 @@
 </template>
 <script>
 export default {
+  name: "Menu",
   data() {
     return {
       searchQuery: '',
