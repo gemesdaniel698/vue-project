@@ -1,32 +1,44 @@
-
 <template>
-  <div id="app">
-    <div class="title">
-      <button>Smart Recall</button>
-      <button>x</button>
+  <div id="app" class="container py-3">
+    <!-- Title Section -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-primary btn-sm">Smart Recall</button>
+      <button class="btn btn-danger btn-sm">x</button>
     </div>
-    <div class="search-bar">
-      <input type="text" v-model="searchQuery" placeholder="Search" />
+
+    <!-- Search Bar -->
+    <div class="mb-3">
+      <input 
+        type="text" 
+        class="form-control" 
+        v-model="searchQuery" 
+        placeholder="Search"
+      />
     </div>
-    <div class="card-container">
-      <div
-        v-for="card in filteredCards"
-        :key="card.id"
-        class="card"
+
+    <!-- Card Container -->
+    <div class="row g-3">
+      <div 
+        v-for="card in filteredCards" 
+        :key="card.id" 
+        class="col-6"
       >
-        {{ card.title }}
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <p class="card-text">{{ card.title }}</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="nav-bar">
-      <button>Library</button>
-      <button>+</button>
-      <button>Profile</button>
+
+    <!-- Navigation Bar -->
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <button class="btn btn-outline-secondary btn-sm">Library</button>
+      <button class="btn btn-success btn-sm">+</button>
+      <button class="btn btn-outline-secondary btn-sm">Profile</button>
     </div>
   </div>
 </template>
-
-
-
 <script>
 export default {
   data() {
@@ -57,37 +69,11 @@ export default {
 </script>
 
 <style>
-#app {
+body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  background-color: #f8f9fa;
 }
-
-.search-bar {
-  margin-bottom: 20px;
-}
-
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
 .card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: center;
-  background-color: #f9f9f9;
-}
-
-.nav-bar {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.title {
-  margin-bottom: 20px;
-  border-style: double;
-  gap: 100px;
+  border-radius: 10px;
 }
 </style>

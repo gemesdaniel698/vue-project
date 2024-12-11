@@ -29,6 +29,64 @@
 </template>
 
 
+<template>
+  <div class="editor container mt-4">
+    <input 
+      v-model="title" 
+      type="text" 
+      placeholder="Title" 
+      class="form-control mb-3"
+    />
+    <div class="cards d-flex flex-column gap-3">
+      <div class="card p-3 shadow-sm" v-for="(card, index) in cards" :key="index">
+        <div class="d-flex align-items-center gap-2">
+          <input 
+            v-model="card.term" 
+            type="text" 
+            placeholder="Term" 
+            class="form-control"
+          />
+          <input 
+            v-model="card.definition" 
+            type="text" 
+            placeholder="Definition" 
+            class="form-control"
+          />
+          <button 
+            class="btn btn-outline-danger btn-sm" 
+            @click="deleteCard(index)"
+          >
+            🗑️
+          </button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary mt-3" @click="addCard">
+      Add New Card
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      title: "",
+      cards: [
+        { term: "", definition: "" }, 
+      ],
+    };
+  },
+  methods: {
+    addCard() {
+      this.cards.push({ term: "", definition: "" });
+    },
+    deleteCard(index) {
+      this.cards.splice(index, 1);
+    },
+  },
+};
+</script>
 
 <script>
 export default {
