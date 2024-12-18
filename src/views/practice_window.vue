@@ -17,6 +17,7 @@
       <span>{{ percentage }}%</span>
     </div>
     <button @click="keepPracticing">Keep practicing</button>
+    <button class="menu-button" @click="goToMenu">Back to Menu</button>
   </div>
 </template>
 
@@ -36,12 +37,12 @@ export default {
     keepPracticing() {
       console.log("Keep practicing clicked");
     },
+    goToMenu() {
+      this.$router.push({ name: "Menu" }); 
+    },
   },
 };
 </script>
-
-
-
 
 
 
