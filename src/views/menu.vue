@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container py-3"  v-if="$route.name !== 'PracticeWindow'">
+  <div class="container py-3"  v-if="$route.name !== 'PracticeWindow'">
     <!-- Title Section -->
     <div class="d-flex justify-content-between align-items-center mb-3">
       <button class="btn btn-primary btn-sm">Smart Recall</button>
@@ -40,7 +40,8 @@
     </div>
   </div>
 </template>
-<script>
+
+<script lang="ts">
 export default {
   name: "Menu",
   data() {

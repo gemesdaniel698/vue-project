@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div>
     <div class="score-container">
       <div class="score">
         <div class="still-learning">3</div>
@@ -22,7 +22,7 @@
 
 
 
-<script>
+<script lang="ts">
 export default {
   name: "PracticeWindow",
   data() {

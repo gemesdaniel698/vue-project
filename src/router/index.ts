@@ -1,8 +1,6 @@
-import { createApp } from 'vue'
-import App from './menu.vue'
 import { createRouter, createWebHistory } from 'vue-router';
-import Menu from './menu.vue'
-import PracticeWindow from './practice_window.vue'
+import Menu from '../views/menu.vue'
+import PracticeWindow from '../views/practice_window.vue'
 
 const routes = [
     {
@@ -24,11 +22,3 @@ const routes = [
   });
 
   export default router;
-
-createApp(App)
-.use(router)
-.mount('#app')
-
-// main.js
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';

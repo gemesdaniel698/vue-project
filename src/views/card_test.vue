@@ -1,5 +1,4 @@
 <template>
-  <div class="app">
     <div class="top-bar">
       <div class="score">
         <span>{{ stillLearning }}</span> - <span>{{ know }}</span>
@@ -12,10 +11,9 @@
       </div>
       <button class="btn-right" @click="moveToKnow">Know</button>
     </div>
-  </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data() {
     return {
