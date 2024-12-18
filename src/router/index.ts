@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Menu from '../views/menu.vue'
-import PracticeWindow from '../views/practice_window.vue'
+import Cardpage from '../views/card_test.vue'
 
 const routes = [
     {
@@ -10,8 +10,8 @@ const routes = [
       },
     {
       path: '/card/:id',
-      name: 'PracticeWindow',
-      component: PracticeWindow,
+      name: 'Cardpage',
+      component: Cardpage,
     },
     // Other routes...
   ];

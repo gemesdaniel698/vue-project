@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-3"  v-if="$route.name !== 'PracticeWindow'">
+  <div class="container py-3"  v-if="$route.name !== 'Cardpage'">
     <!-- Title Section -->
     <div class="d-flex justify-content-between align-items-center mb-3">
       <button class="btn btn-primary btn-sm">Smart Recall</button>
@@ -21,7 +21,7 @@
       <router-link 
         v-for="card in filteredCards" 
         :key="card.id" 
-        :to="{ name: 'PracticeWindow', params: { id: card.id } }"
+        :to="{ name: 'Cardpage', params: { id: card.id } }"
         class="col-6"
       >
         <div class="card text-center shadow-sm">
