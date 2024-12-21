@@ -10,45 +10,42 @@
   />
  </head>
  <body>
-  <div id="app">
+  <div id="app ">
     <!-- Main Container -->
-    <div class="container mt-4">
-      <!-- Top Buttons -->
-      <div class="row text-center mb-2">
-        <div class="col-6">
-          <button class="btn w-100">Still Learning</button>
+    <div class="container px-4 ">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+       <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="1000000">
+         <img src="/src/pictures/haus.jpg" class="d-block w-100" alt="...">
         </div>
-        <div class="col-6">
-          <button >Know</button>
+        <div class="carousel-item" data-bs-interval="1000000">
+         <img src="/src/pictures/haz.jpg" class="d-block w-100" alt="...">
         </div>
-      </div>
-
-      <!-- Flashcard -->
-      <div class="flashcard">
-        <h2 class="display-6">{{ "word" }}</h2>
-      </div>
-
-      <!-- Extra Button -->
-      <div class="text-center">
-        <button class="btn btn-primary w-100 mt-3">Extra Action</button>
-      </div>
-
+       </div>
+       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Next</span>
+        </button>
+</div>
       <!-- Fixed Button -->
       <button class="btn btn-info btn-fixed">Fixed Button</button>
     </div>
   </div>
-
-  <!-- Vue JS -->
-  <script lang="ts">
-   export default {
-   name: "Cardpage",
-   };
-  
-    src="https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.prod.js">
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
-  </script>
  </body>
 </template>
+<!-- Vue JS -->
+<script lang="ts">
+import { CarouselPlugin } from 'bootstrap-vue';
+
+ export default {
+ name: "Cardpage",
+ };
+  
+</script>
 <style>
 body {
   background-color: #f8f9fa; /* Light gray background */
