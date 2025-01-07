@@ -12,19 +12,21 @@
  <body>
   <div id="app ">
     <!-- Main Container -->
-    <div class="container-xxl px-4 ">
-     <div class="row align-items-center">
-      <div class="col-md-2"> 
+    <div class="container-xxl">
+     <div class="row align-items-center ">
+      <!-- Correct button -->
+      <div class="col-lg-2"> 
        <button type="button" class="btn btn-success">Success</button>
       </div>  
-      <div class="col-md-6"> 
+      <!-- Card -->
+      <div class="col-lg-6"> 
          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
-           <div class="carousel-item active" data-bs-interval="1000000">
-            <img src="/src/pictures/haus.jpg" class="d-block w-75" alt="...">
+           <div class="carousel-item active align-items-center" data-bs-interval="false">
+            <img src="/src/pictures/haus.jpg" class="" alt="...">
            </div>
-           <div class="carousel-item" data-bs-interval="1000000">
-            <img src="/src/pictures/haz.jpg" class="d-block w-75" alt="...">
+           <div class="carousel-item align-items-center" data-bs-interval="false">
+            <img src="/src/pictures/haz.jpg" class="" alt="...">
            </div>
           </div>
            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -37,12 +39,11 @@
            </button>
          </div>
       </div>
-      <div class="col-md-2"> 
+      <!-- Incorrect button -->
+      <div class="col-lg-2"> 
          <button type="button" class="btn btn-danger">Danger</button>
       </div>
      </div>
-      <!-- Fixed Button -->
-      <button class="btn btn-info btn-fixed">Fixed Button</button>
     </div>
   </div>
  </body>
@@ -57,8 +58,27 @@ import { CarouselPlugin } from 'bootstrap-vue';
   
 </script>
 <style>
+.container-xxl {
+  border-style: dotted;
+}
+.col-lg-6 {
+  border-style: groove;
+  border-radius: 12px;
+}
+.col-lg-2 {
+  border-style: double;
+}
+div {
+  background-color: lightblue;
+}
+button {
+  background-color: lightblue;
+}
 body {
-  background-color: #f8f9fa; /* Light gray background */
+  border-style: dotted;
+}
+.container-fluid {
+  background-color: #383dd6
 }
 .flashcard {
   border: 2px solid #dee2e6;
@@ -75,4 +95,5 @@ body {
   right: 20px;
   z-index: 1000;
 }
+
 </style>
