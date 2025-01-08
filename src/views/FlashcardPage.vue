@@ -14,7 +14,7 @@
     </div>
   </template>
   
-  <script lang="ts">
+<script lang="ts">
   import { defineComponent, ref, computed } from "vue";
   import { useRoute } from "vue-router";
   
@@ -64,9 +64,9 @@
       return { currentCard, nextCard };
     },
   });
-  </script>
+</script>
   
-  <style scoped>
+<style scoped>
   .flashcard {
     border: 2px solid #dee2e6;
     border-radius: 10px;
@@ -75,5 +75,5 @@
     padding: 20px;
     margin: 30px auto;
   }
-  </style>
+</style>
   
