@@ -3,7 +3,12 @@ import App from './App.vue';
 import router from './router';
 
 let cards = [
-    { id: 1, title: 'German words - Lektion 4' },
+    { id: 1, 
+      title: 'German words - Lektion 4',
+      cards: [ 
+        { term: 'abc', definition: 'def1'},
+    ]
+    },
     { id: 2, title: 'German words - Lektion 3' },
     { id: 3, title: 'German words - Lektion 2' },
     { id: 4, title: 'German words - Lektion 1' },
