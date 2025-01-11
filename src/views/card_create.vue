@@ -43,6 +43,7 @@
 
 <script lang="ts">
 export default {
+  name: "CardCreate",
   data() {
     return {
       title: "",

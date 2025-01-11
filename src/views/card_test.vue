@@ -17,42 +17,77 @@
       <div class="col-md-2"> 
        <button type="button" class="btn btn-success">Success</button>
       </div>  
-      <div class="col-md-6"> 
-         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-           <div class="carousel-item active" data-bs-interval="1000000">
-            <img src="/src/pictures/haus.jpg" class="d-block w-75" alt="...">
-           </div>
-           <div class="carousel-item" data-bs-interval="1000000">
-            <img src="/src/pictures/haz.jpg" class="d-block w-75" alt="...">
-           </div>
+      <div class="carousel">
+       <!-- Slider Container -->
+        <div class="carousel-container" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+          <!-- Slide-ek -->
+         <div
+           v-for="(slide, index) in slides"
+           :key="index"
+           class="carousel-slide"
+          > 
+           <h2>{{ slide.title }}</h2>
+           <p>{{ slide.content }}</p>
           </div>
-           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-           </button>
-           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-           </button>
-         </div>
+        </div>
+
+        <!-- Navigációs gombok -->
+        <button class="carousel-btn prev" @click="prevSlide">‹</button>
+        <button class="carousel-btn next" @click="nextSlide">›</button>
+
+        <!-- Navigációs pontok -->
+        <div class="carousel-dots">
+          <span
+            v-for="(slide, index) in slides"
+            :key="index"
+            :class="{ active: currentIndex === index }"
+            @click="goToSlide(index)"
+          ></span>
+        </div>
       </div>
+     </div>
+    </div>
       <div class="col-md-2"> 
          <button type="button" class="btn btn-danger">Danger</button>
       </div>
-     </div>
+
       <!-- Fixed Button -->
       <button class="btn btn-info btn-fixed">Fixed Button</button>
-    </div>
   </div>
  </body>
 </template>
 <!-- Vue JS -->
 <script lang="ts">
 import { CarouselPlugin } from 'bootstrap-vue';
-
  export default {
  name: "Cardpage",
+ data() {
+    return {
+      slides: [
+        {
+          title: "Első Dia",
+          content: "Ez az első diánk tartalma, amely fontos információkat tartalmaz.",
+        },
+        {
+          title: "Második Dia",
+          content: "Ez a második dián található szöveges információ.",
+        },
+      ],
+      currentIndex: 0,
+    };
+  },
+  methods: {
+    nextSlide() {
+      this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+    },
+    prevSlide() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+    },
+    goToSlide(index) {
+      this.currentIndex = index;
+    },
+  },
  };
   
 </script>
@@ -74,5 +109,79 @@ body {
   bottom: 20px;
   right: 20px;
   z-index: 1000;
+}
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.carousel-slide h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.carousel-slide p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.carousel-dots span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel-dots span.active {
+  background-color: #333;
 }
 </style>

@@ -35,13 +35,19 @@
     <!-- Navigation Bar -->
     <div class="d-flex justify-content-between align-items-center mt-4">
       <button class="btn btn-outline-secondary btn-sm">Library</button>
-      <button class="btn btn-success btn-sm">+</button>
+      <div class="cardpath">
+        <RouterLink to="../views/card_create">
+          +
+        </RouterLink>
+      </div>
       <button class="btn btn-outline-secondary btn-sm">Profile</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { RouterLink } from 'vue-router';
+
 export default {
   name: "Menu",
   data() {

@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Menu from '../views/menu.vue'
 import Cardpage from '../views/card_test.vue'
-
+import card_test from '../views/card_test.vue';
+import CardCreate from '../views/card_create.vue';
 const routes = [
     {
         path: '/',
@@ -12,6 +13,11 @@ const routes = [
       path: '/card/:id',
       name: 'Cardpage',
       component: Cardpage,
+    },
+    {
+      path: '/views/card_create',
+      name: 'CardCreate',
+      component: CardCreate,
     },
     // Other routes...
   ];
