@@ -13,7 +13,21 @@
   <div id="app ">
     <!-- Main Container -->
     <div class="container-xxl px-4 ">
-     <div class="row align-items-center">
+      <div>
+          <button @click="shuffleArray">Shuffle Array</button>
+          <button @click="deleteFirstElement">Delete First Element</button>
+          <button @click="moveFirstElement">Add First Element</button>
+        <div>
+          <h3>Original Array:</h3>
+          <p>{{ originalArray }}</p>
+        </div>
+        <div>
+         <h3>New Array:</h3>
+         <p>{{ newArray }}</p>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
       <div class="col-md-2"> 
        <button type="button" class="btn btn-success">Success</button>
       </div>  
@@ -48,7 +62,7 @@
      </div>
     </div>
       <div class="col-md-2"> 
-         <button type="button" class="btn btn-danger">Danger</button>
+         <button type="button" class="btn btn-danger" @click="deleteFirstElement">Danger</button>
       </div>
 
       <!-- Fixed Button -->
@@ -59,21 +73,23 @@
 <!-- Vue JS -->
 <script lang="ts">
 import { CarouselPlugin } from 'bootstrap-vue';
- export default {
+import {cards} from '../main';
+
+export default {
  name: "Cardpage",
+ 
  data() {
     return {
       slides: [
-        {
-          title: "Első Dia",
-          content: "Ez az első diánk tartalma, amely fontos információkat tartalmaz.",
-        },
-        {
-          title: "Második Dia",
-          content: "Ez a második dián található szöveges információ.",
-        },
+       // {title: "Első Dia",content: 'sdasdasd',},
+       // {title: "Második Dia",content: "Ez a második dián található szöveges információ.",},
+        cards[0].words,
       ],
       currentIndex: 0,
+      originalArray: [1, 2, 3, 4, 5], // Example initial array
+      newArray: [], // Array to hold pasted elements
+      searchQuery: '',
+      words: this.$words,
     };
   },
   methods: {
@@ -81,11 +97,36 @@ import { CarouselPlugin } from 'bootstrap-vue';
       this.currentIndex = (this.currentIndex + 1) % this.slides.length;
     },
     prevSlide() {
-      this.currentIndex =
-        (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+      this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
     },
     goToSlide(index) {
       this.currentIndex = index;
+    },
+    // Method to shuffle the array
+    shuffleArray() {
+      for (let i = this.originalArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [this.originalArray[i], this.originalArray[j]] = [this.originalArray[j], this.originalArray[i]];
+      }
+    },
+    // Method to delete the first element of originalArray
+    deleteFirstElement() {
+      if (this.originalArray.length > 0) {
+        this.originalArray.shift();
+      } else {
+        alert("Original array is empty! Nothing to delete.");
+      }
+      this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+    },
+    // Method to move the first element from originalArray to newArray
+    moveFirstElement() {
+      if (this.originalArray.length > 0) {
+        const firstElement = this.originalArray.shift();
+        this.newArray.push(firstElement);
+      } else {
+        alert("Original array is empty! Nothing to move.");
+      }
+      this.currentIndex = (this.currentIndex + 1) % this.slides.length;
     },
   },
  };

@@ -5,8 +5,11 @@ import router from './router';
 let cards = [
     { id: 1, 
       title: 'German words - Lektion 4',
-      cards: [ 
-        { term: 'abc', definition: 'def1'},
+      words: [ 
+        { term: 'abc1', definition: 'def1'},
+        { term: 'abc2', definition: 'def2'},
+        { term: 'abc3', definition: 'def3'},
+        { term: 'abc4', definition: 'def4'},
     ]
     },
     { id: 2, title: 'German words - Lektion 3' },
@@ -19,7 +22,6 @@ let cards = [
     { id: 9, title: 'English - Unit 7' },
     { id: 10, title: 'Chemistry definitions' },
   ];
-
 const app = createApp(App)
 app.config.globalProperties.$cards = cards;
 
@@ -29,3 +31,6 @@ app.mount('#app')
 // main.js
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+export {
+  cards,
+}
