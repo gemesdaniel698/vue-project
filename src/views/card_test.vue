@@ -15,7 +15,7 @@
     <div class="container-xxl px-4 ">
      <div class="row align-items-center">
       <div class="col-md-2"> 
-       <button type="button" class="btn btn-success">Success</button>
+       <button type="button" class="btn btn-success" @click="nextSlide",>Success</button>
       </div>  
       <div class="carousel">
        <!-- Slider Container -->
@@ -26,14 +26,15 @@
            :key="index"
            class="carousel-slide"
           > 
-           <h2>{{ slide.title }}</h2>
+           <h2>{{ cards[0].words[0].term }}</h2>
+           <!--  <h2>{{ slide.title }}</h2> -->
            <p>{{ slide.content }}</p>
           </div>
         </div>
 
         <!-- Navigációs gombok -->
-        <button class="carousel-btn prev" @click="prevSlide">‹</button>
-        <button class="carousel-btn next" @click="nextSlide">›</button>
+        <!-- <button class="carousel-btn prev" @click="prevSlide">‹</button> -->
+         <!--<button class="carousel-btn next" @click="nextSlide">›</button> -->
 
         <!-- Navigációs pontok -->
         <div class="carousel-dots">
@@ -48,7 +49,7 @@
      </div>
     </div>
       <div class="col-md-2"> 
-         <button type="button" class="btn btn-danger">Danger</button>
+         <button type="button" class="btn btn-danger" @click="nextSlide",>Danger</button>
       </div>
 
       <!-- Fixed Button -->
@@ -59,7 +60,8 @@
 <!-- Vue JS -->
 <script lang="ts">
 import { CarouselPlugin } from 'bootstrap-vue';
- export default {
+
+export default {
  name: "Cardpage",
  data() {
     return {
@@ -73,16 +75,18 @@ import { CarouselPlugin } from 'bootstrap-vue';
           content: "Ez a második dián található szöveges információ.",
         },
       ],
+      cards: this.$cards,
       currentIndex: 0,
+
     };
   },
-  methods: {
+  methods: 
     nextSlide() {
       this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+      failure = words.pop[0]
     },
     prevSlide() {
-      this.currentIndex =
-        (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+      this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
     },
     goToSlide(index) {
       this.currentIndex = index;

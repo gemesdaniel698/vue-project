@@ -5,8 +5,13 @@ import router from './router';
 let cards = [
     { id: 1, 
       title: 'German words - Lektion 4',
-      cards: [ 
+      words: [ 
         { term: 'abc', definition: 'def1'},
+        { term: 'abc2', definition: 'def2'},
+    ],
+    failure: [
+
+
     ]
     },
     { id: 2, title: 'German words - Lektion 3' },
