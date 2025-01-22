@@ -5,13 +5,27 @@ import router from './router';
 let cards = [
     { id: 1, 
       title: 'German words - Lektion 4',
-      words: [ 
-        { term: 'abc', definition: 'def1'},
-        { term: 'abc2', definition: 'def2'},
-    ],
-    failure: [
-
-
+      cards: [ 
+        { term: 'Haus', definition: 'ház'},  
+        { term: 'Baum', definition: 'fa'},  
+        { term: 'Auto', definition: 'autó'},  
+        { term: 'Schule', definition: 'iskola'},  
+        { term: 'Buch', definition: 'könyv'},  
+        { term: 'Freund', definition: 'barát'},  
+        { term: 'Tisch', definition: 'asztal'},  
+        { term: 'Stuhl', definition: 'szék'},  
+        { term: 'Wasser', definition: 'víz'},  
+        { term: 'Katze', definition: 'macska'},  
+        { term: 'Hund', definition: 'kutya'},  
+        { term: 'Zug', definition: 'vonat'},  
+        { term: 'Tür', definition: 'ajtó'},  
+        { term: 'Fenster', definition: 'ablak'},  
+        { term: 'Uhr', definition: 'óra'},  
+        { term: 'Apfel', definition: 'alma'},  
+        { term: 'Blume', definition: 'virág'},  
+        { term: 'Garten', definition: 'kert'},  
+        { term: 'Straße', definition: 'utca'},  
+        { term: 'Kind', definition: 'gyerek'},  
     ]
     },
     { id: 2, title: 'German words - Lektion 3' },
@@ -24,7 +38,6 @@ let cards = [
     { id: 9, title: 'English - Unit 7' },
     { id: 10, title: 'Chemistry definitions' },
   ];
-
 const app = createApp(App)
 app.config.globalProperties.$cards = cards;
 
@@ -34,3 +47,6 @@ app.mount('#app')
 // main.js
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+export {
+  cards,
+}
