@@ -1,7 +1,5 @@
 <template>
  <head>
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flashcard with Vue</title>
@@ -17,21 +15,11 @@
     <div class="container-xxl px-4 ">
       <div>
           <button @click="shuffleArray">Shuffle Array</button>
-          <button @click="deleteFirstElement">Delete First Element</button>
-          <button @click="moveFirstElement">Add First Element</button>
-        <div>
-          <h3>Original Array:</h3>
-          <p>{{ originalArray }}</p>
-        </div>
-        <div>
-         <h3>New Array:</h3>
-         <p>{{ newArray }}</p>
-        </div>
       </div>
 
       <div class="row align-items-center">
       <div class="col-md-2"> 
-       <button type="button" class="btn btn-success">Success</button>
+       <button type="button" class="btn btn-success" @click = deleteFirstElement>Success</button>
       </div>  
       <div class="carousel">
        <!-- Slider Container -->
@@ -42,14 +30,19 @@
            :key="index"
            class="carousel-slide"
           > 
-           <h2>{{ slide.term }}</h2>
-           
+
+           <!-- card with term and def -->
+           <div class="card-container" @click="flipCard">
+            <div class="cardself" :class="{ flipped: isFlipped }">
+             <div class="cardside front">{{ slide.term }}</div>
+             <div class="cardside back">{{ slide.definition }}</div>
+            </div>
+           </div>
           </div>
         </div>
 
         <!-- Navigációs gombok -->
-        <button class="carousel-btn prev" @click="prevSlide">‹</button>
-        <button class="carousel-btn next" @click="nextSlide">›</button>
+
 
         <!-- Navigációs pontok -->
         <div class="carousel-dots">
@@ -64,7 +57,7 @@
      </div>
     </div>
       <div class="col-md-2"> 
-         <button type="button" class="btn btn-danger" @click="deleteFirstElement">Danger</button>
+         <button type="button" class="btn btn-danger" @click="moveFirstElement">Danger</button>
       </div>
 
       <!-- Fixed Button -->
@@ -87,11 +80,15 @@ export default {
       // {term: "Második Dia"},
         cards[0].words
       ,
+      words: this.$words,
       currentIndex: 0,
-      originalArray: [1, 2, 3, 4, 5], // Example initial array
+      originalArray: Array.from(cards[0].words),
+     // originalArray: [cards[0].words], // Example initial array
       newArray: [], // Array to hold pasted elements
       searchQuery: '',
-      words: this.$words,
+      isFlipped: false, // Tracks whether the card is flipped
+      sideA: 1,         // Content for side A
+      sideB: 1,         // Content for side B
     };
   },
   methods: {
@@ -119,6 +116,7 @@ export default {
         alert("Original array is empty! Nothing to delete.");
       }
       this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+      this.isFlipped = !this.isFlipped;
     },
     // Method to move the first element from originalArray to newArray
     moveFirstElement() {
@@ -129,6 +127,10 @@ export default {
         alert("Original array is empty! Nothing to move.");
       }
       this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+      this.isFlipped = !this.isFlipped;
+    },
+    flipCard() {
+      this.isFlipped = !this.isFlipped;
     },
   },
  };
@@ -226,5 +228,45 @@ body {
 
 .carousel-dots span.active {
   background-color: #333;
+}
+/* for the rotating card be carefull when modifing*/
+.card-container {
+  perspective: 1000px;
+  display: inline-block;
+}
+
+.cardself {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.cardself.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.front {
+  background-color: #f9f9f9;
+}
+
+.back {
+  background-color: #d9e8fc;
+  transform: rotateY(180deg);
 }
 </style>
