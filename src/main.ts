@@ -5,7 +5,7 @@ import router from './router';
 let cards = [
     { id: 1, 
       title: 'German words - Lektion 4',
-      cards: [ 
+      words: [ 
         { term: 'Haus', definition: 'ház'},  
         { term: 'Baum', definition: 'fa'},  
         { term: 'Auto', definition: 'autó'},  
@@ -19,13 +19,13 @@ let cards = [
         { term: 'Hund', definition: 'kutya'},  
         { term: 'Zug', definition: 'vonat'},  
         { term: 'Tür', definition: 'ajtó'},  
-        { term: 'Fenster', definition: 'ablak'},  
+        { term: 'Fenster', definition: 'ablak'},
         { term: 'Uhr', definition: 'óra'},  
         { term: 'Apfel', definition: 'alma'},  
         { term: 'Blume', definition: 'virág'},  
         { term: 'Garten', definition: 'kert'},  
         { term: 'Straße', definition: 'utca'},  
-        { term: 'Kind', definition: 'gyerek'},  
+        { term: 'Kind', definition: 'gyerek'}, 
     ]
     },
     { id: 2, title: 'German words - Lektion 3' },

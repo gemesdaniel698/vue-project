@@ -1,5 +1,7 @@
 <template>
  <head>
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flashcard with Vue</title>
@@ -40,8 +42,8 @@
            :key="index"
            class="carousel-slide"
           > 
-           <h2>{{ slide.title }}</h2>
-           <p>{{ slide.content }}</p>
+           <h2>{{ slide.term }}</h2>
+           
           </div>
         </div>
 
@@ -80,11 +82,11 @@ export default {
  
  data() {
     return {
-      slides: [
-       // {title: "Első Dia",content: 'sdasdasd',},
-       // {title: "Második Dia",content: "Ez a második dián található szöveges információ.",},
-        cards[0].words,
-      ],
+      slides: 
+      // {term: "Első Dia"},
+      // {term: "Második Dia"},
+        cards[0].words
+      ,
       currentIndex: 0,
       originalArray: [1, 2, 3, 4, 5], // Example initial array
       newArray: [], // Array to hold pasted elements
