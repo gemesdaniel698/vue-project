@@ -14,10 +14,16 @@
     <!-- Main Container -->
    <!-- <div class="container-xxl px-4 "> -->
       <div>
-          <button @click="shuffleArray">Shuffle Array</button>
+       <!-- <button @click="shuffleArray">Shuffle Array</button> -->
       </div>
-      <div class="fixed-right"> 
-       <button type="button" class="btn btn-success" @click = deleteFirstElement>Success</button>
+      <div class="score-container">
+       <div class="score">
+         <div class="incorrect">{{ incorrect }}</div> <span>-</span><div class="correct">{{ correct }}</div>
+       </div>
+      </div>
+      <div class="row">
+      <div class="succses"> 
+       <button type="button" class="btn btn-success" @click = deleteFirstElement >Success</button>
       </div>  
       <div class="row align-items-center">
       <div class="fixed-center">
@@ -44,23 +50,25 @@
          <!-- Navigációs gombok -->
 
 
-         <!-- Navigációs pontok -->
-         <div class="carousel-dots">
-           <span
-             v-for="(slide, index) in slides"
-             :key="index"
-             :class="{ active: currentIndex === index }"
-             @click="goToSlide(index)"
-           ></span>
-         </div>
-       </div>
-      </div>  
+        <!-- Navigációs pontok -->
+        <div class="carousel-dots">
+          <span
+            v-for="(slide, index) in slides"
+            :key="index"
+            :class="{ active: currentIndex === index }"
+            @click="goToSlide(index)"
+          ></span>
+        </div>
       </div>
-     <div class="fixed-left"> 
-         <button type="button" class="btn btn-danger" @click="moveFirstElement">Danger</button>
      </div>
     </div>
- <!-- </div> -->
+      <div class="col-md-2"> 
+         <button type="button" class="btn btn-danger" @click="moveFirstElement">Danger</button>
+      </div>
+
+      <!-- Fixed Button -->
+      <button class="btn btn-info btn-fixed">Fixed Button</button>
+  </div>
  </body>
 </template>
 <!-- Vue JS -->
@@ -87,6 +95,8 @@ export default {
       isFlipped: false, // Tracks whether the card is flipped
       sideA: 1,         // Content for side A
       sideB: 1,         // Content for side B
+      correct: 0,
+      incorrect: 0,
     };
   },
   methods: {
@@ -115,6 +125,7 @@ export default {
       }
       this.currentIndex = (this.currentIndex + 1) % this.slides.length;
       this.isFlipped = !this.isFlipped;
+      this.correct++;
     },
     // Method to move the first element from originalArray to newArray
     moveFirstElement() {
@@ -126,6 +137,7 @@ export default {
       }
       this.currentIndex = (this.currentIndex + 1) % this.slides.length;
       this.isFlipped = !this.isFlipped;
+      this.incorrect++;
     },
     flipCard() {
       this.isFlipped = !this.isFlipped;
