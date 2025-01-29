@@ -65,9 +65,10 @@
       <div class="col-md-2"> 
          <button type="button" class="btn btn-danger" @click="moveFirstElement">Danger</button>
       </div>
-
+    
       <!-- Fixed Button -->
       <button class="btn btn-info btn-fixed">Fixed Button</button>
+  </div>
   </div>
  </body>
 </template>
