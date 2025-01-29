@@ -12,57 +12,55 @@
  <body>
   <div id="app ">
     <!-- Main Container -->
-    <div class="container-xxl px-4 ">
+   <!-- <div class="container-xxl px-4 "> -->
       <div>
           <button @click="shuffleArray">Shuffle Array</button>
       </div>
-
-      <div class="row align-items-center">
-      <div class="col-md-2"> 
+      <div class="fixed-right"> 
        <button type="button" class="btn btn-success" @click = deleteFirstElement>Success</button>
       </div>  
-      <div class="carousel">
-       <!-- Slider Container -->
-        <div class="carousel-container" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-          <!-- Slide-ek -->
-         <div
-           v-for="(slide, index) in slides"
-           :key="index"
-           class="carousel-slide"
-          > 
-
-           <!-- card with term and def -->
-           <div class="card-container" @click="flipCard">
-            <div class="cardself" :class="{ flipped: isFlipped }">
-             <div class="cardside front">{{ slide.term }}</div>
-             <div class="cardside back">{{ slide.definition }}</div>
-            </div>
-           </div>
-          </div>
-        </div>
-
-        <!-- Navigációs gombok -->
-
-
-        <!-- Navigációs pontok -->
-        <div class="carousel-dots">
-          <span
+      <div class="row align-items-center">
+      <div class="fixed-center">
+       <div class="carousel">
+        <!-- Slider Container -->
+         <div class="carousel-container" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+           <!-- Slide-ek -->
+          <div
             v-for="(slide, index) in slides"
             :key="index"
-            :class="{ active: currentIndex === index }"
-            @click="goToSlide(index)"
-          ></span>
-        </div>
+            class="carousel-slide"
+           > 
+
+            <!-- card with term and def -->
+            <div class="card-container" @click="flipCard">
+             <div class="cardself" :class="{ flipped: isFlipped }">
+              <div class="cardside front">{{ slide.term }}</div>
+              <div class="cardside back">{{ slide.definition }}</div>
+             </div>
+            </div>
+           </div>
+         </div>
+
+         <!-- Navigációs gombok -->
+
+
+         <!-- Navigációs pontok -->
+         <div class="carousel-dots">
+           <span
+             v-for="(slide, index) in slides"
+             :key="index"
+             :class="{ active: currentIndex === index }"
+             @click="goToSlide(index)"
+           ></span>
+         </div>
+       </div>
+      </div>  
       </div>
+     <div class="fixed-left"> 
+         <button type="button" class="btn btn-danger" @click="moveFirstElement">Danger</button>
      </div>
     </div>
-      <div class="col-md-2"> 
-         <button type="button" class="btn btn-danger" @click="moveFirstElement">Danger</button>
-      </div>
-
-      <!-- Fixed Button -->
-      <button class="btn btn-info btn-fixed">Fixed Button</button>
-  </div>
+ <!-- </div> -->
  </body>
 </template>
 <!-- Vue JS -->
@@ -162,11 +160,10 @@ body {
   max-width: 600px;
   margin: auto;
   background: #f9f9f9;
-  border: 1px solid #ccc;
+  border: 10px solid #333;
   border-radius: 10px;
   padding: 20px;
 }
-
 .carousel-container {
   display: flex;
   transition: transform 0.5s ease-in-out;
