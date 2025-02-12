@@ -12,7 +12,7 @@
  <body>
   <div id="app ">
     <!-- Main Container -->
-    <div class="container-xxl px-4 ">
+   <div class="container">
       <div>
        <!-- <button @click="shuffleArray">Shuffle Array</button> -->
       </div>
@@ -21,61 +21,55 @@
          <div class="incorrect">{{ incorrect }}</div> <span>-</span><div class="correct">{{ correct }}</div>
        </div>
       </div>
-      <div class="cardview" v-show="originalArray.length > 0">
-       <div class="row">
-       <div class="succses"> 
-        <button type="button" class="btn btn-success" @click = deleteFirstElement >Success</button>
-       </div>  
-       <div class="carousel">
-       <!-- Slider Container -->
-        <div class="carousel-container" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-          <!-- Slide-ek -->
-         <div
-           v-for="(slide, index) in slides"
-           :key="index"
-           class="carousel-slide"
-          > 
+      <div class="row align-items-center text-center">
+  <!-- Bal oldali gomb (Success) -->
+  <div class="col-3 col-lg-2 d-flex justify-content-center">
+    <button type="button" class="btn btn-success w-75" style="min-width: 80px;" @click="deleteFirstElement">
+      Success
+    </button>
+  </div>
 
-           <!-- card with term and def -->
-           <div class="card-container" @click="flipCard">
+  <!-- Carousel konténer -->
+  <div class="col-6">
+    <div class="carousel mx-auto">
+      <div class="carousel-container" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+        <div v-for="(slide, index) in slides" :key="index" class="carousel-slide"> 
+          <div class="card-container" @click="flipCard">
             <div class="cardself" :class="{ flipped: isFlipped }">
-             <div class="cardside front">{{ slide.term }}</div>
-             <div class="cardside back">{{ slide.definition }}</div>
+              <div class="cardside front">{{ slide.term }}</div>
+              <div class="cardside back">{{ slide.definition }}</div>
             </div>
-           </div>
           </div>
         </div>
-
-        <!-- Navigációs gombok -->
-
-
-        <!-- Navigációs pontok -->
-        <div class="carousel-dots">
-          <span
-            v-for="(slide, index) in slides"
-            :key="index"
-            :class="{ active: currentIndex === index }"
-            @click="goToSlide(index)"
-          ></span>
-        </div>
       </div>
-     </div>
+      <div class="carousel-dots">
+        <span v-for="(slide, index) in slides" :key="index"
+          :class="{ active: currentIndex === index }"
+          @click="goToSlide(index)">
+        </span>
+      </div>
     </div>
-      <div class="danger"> 
-         <button type="button" class="btn btn-danger" @click=moveFirstElement >Danger</button>
-      </div>
+  </div>
+
+  <!-- Jobb oldali gomb (Danger) -->
+  <div class="col-3 col-lg-2 d-flex justify-content-center">
+    <button type="button" class="btn btn-danger w-75" style="min-width: 80px;" @click="moveFirstElement">
+      Danger
+    </button>
+  </div>
 
       <!-- Fixed Button -->
       <router-link to="/" class="btn btn-info btn-fixed">Menu</router-link>
    </div>
   </div>
   <div class="practiceview btn-center" v-show="originalArray.length == 0">
-    <button type="button" class="btn btn-danger" @click=practice >Practice</button>
+    <button type="button" class="btn btn-danger" @click= >Practice</button>
     <div class="circle">
       <span>{{ 9000 }}%</span>
     </div>
    <!--<button @click="keepPracticing">Keep practicing</button> -->
     <router-link to="/" class="btn btn-info btn-fixed">Menu</router-link>
+    </div>
     </div>
  </body>
 </template>
@@ -83,20 +77,22 @@
 <script lang="ts">
 import { CarouselPlugin } from 'bootstrap-vue';
 import {cards} from '../main';
-import cloneDeep from 'lodash/cloneDeep';
 export default {
  name: "Cardpage",
  
  data() {
+  const cardId = parseInt(this.$route.params.id, 10);
     return {
+      cards: this.$cards,
+      x: this.$x,
       slides: 
       // {term: "Első Dia"},
       // {term: "Második Dia"},
-        cards[0].words
+        cards[cardId].words
       ,
       words: this.$words,
       currentIndex: 0,
-      originalArray: Array.from(cards[0].words),
+      originalArray: Array.from(cards[cardId].words),
      // originalArray: [cards[0].words], // Example initial array
       newArray: [], // Array to hold pasted elements
       searchQuery: '',
@@ -151,52 +147,37 @@ export default {
     flipCard() {
       this.isFlipped = !this.isFlipped;
     },
-    practice() {
-    // Temporarily store newArray in a variable (deep copy)
-    const temp = cloneDeep(newArray.value);
-
-    // Assign originalArray to newArray (deep copy)
-    newArray.value = cloneDeep(originalArray.value);
-
-    // Assign temp (old newArray) to originalArray (deep copy)
-    originalArray.value = temp;
-
-    }
   },
  };
   
 </script>
 <style>
-body {
-  background-color: #f8f9fa; /* Light gray background */
+
+.body {
+  background-color: #239d60; /* Light gray background */
+  background: #333;
 }
 .flashcard {
-  border: 2px solid #dee2e6;
+  border: 2px solid #143f6a;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  background-color: #607382;
   text-align: center;
   padding: 20px;
   margin: 30px auto;
 }
-.btn-fixed {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
+
 .carousel {
   position: relative;
   overflow: hidden;
   width: 100%;
   max-width: 600px;
   margin: auto;
-  background: #f9f9f9;
-  border: 1px solid #ccc;
+  background: #9ebbbf; /*carousel backround color*/
+  border: 1px solid #333;
   border-radius: 10px;
   padding: 20px;
 }
-
 .carousel-container {
   display: flex;
   transition: transform 0.5s ease-in-out;
@@ -211,25 +192,25 @@ body {
 
 .carousel-slide h2 {
   font-size: 1.5rem;
-  color: #333;
+  color: #0a0909;
   margin-bottom: 10px;
 }
 
 .carousel-slide p {
   font-size: 1rem;
-  color: #666;
+  color: #961313;
 }
 
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(156, 44, 44, 0.5);
   border: none;
-  color: white;
+  color: rgb(122, 37, 37);
   padding: 10px;
   border-radius: 50%;
-  cursor: pointer;
+  cursor: pointer;                                                    
   font-size: 1.2rem;
 }
 
@@ -250,7 +231,7 @@ body {
   display: inline-block;
   width: 10px;
   height: 10px;
-  background-color: #ddd;
+  background-color: #f3f2f2; /*carousel dots*/
   border-radius: 50%;
   margin: 0 5px;
   cursor: pointer;
@@ -287,16 +268,22 @@ body {
   align-items: center;
   font-size: 24px;
   font-weight: bold;
-  border: 1px solid #ccc;
+  border: 1px solid #6f5858;
   border-radius: 8px;
 }
 
 .front {
-  background-color: #f9f9f9;
+  background-color: #d0d3d4; /*card background front */
 }
 
 .back {
-  background-color: #d9e8fc;
+  background-color: #d0d3d4; /*card background back */
   transform: rotateY(180deg);
+}
+template{
+  background-color: #333;
+}
+.container{
+  background-color: #ffffff;
 }
 </style>

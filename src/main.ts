@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router';
 
 let cards = [
-    { id: 1, 
+    { id: 0, 
       title: 'German words - Lektion 4',
       words: [ 
         { term: 'Haus', definition: 'ház'},  
@@ -28,19 +28,31 @@ let cards = [
         { term: 'Kind', definition: 'gyerek'}, 
     ]
     },
-    { id: 2, title: 'German words - Lektion 3' },
-    { id: 3, title: 'German words - Lektion 2' },
-    { id: 4, title: 'German words - Lektion 1' },
-    { id: 5, title: 'German words - Lektion 4' },
-    { id: 6, title: 'German words - Lektion 3' },
-    { id: 7, title: 'German words - Lektion 2' },
-    { id: 8, title: 'German words - Lektion 1' },
-    { id: 9, title: 'English - Unit 7' },
-    { id: 10, title: 'Chemistry definitions' },
+    { id: 1, title: 'German words - Lektion 3',
+      words: [ 
+        { term: 'Stuhl', definition: 'szék'},
+        { term: 'Tisch', definition: 'asztal'},
+        { term: 'Lampe', definition: 'lámpa'},
+        { term: 'Buch', definition: 'könyv'},
+        { term: 'Handy', definition: 'mobiltelefon'},
+        { term: 'Koffer', definition: 'bőrönd'},
+        { term: 'Brille', definition: 'szemüveg'},
+        { term: 'Messer', definition: 'kés'},
+        { term: 'Teller', definition: 'tányér'},
+        { term: 'Schlüssel', definition: 'kulcs'},
+      ]
+    }, 
+    { id: 2, title: 'German words - Lektion 2' },
+    { id: 3, title: 'German words - Lektion 1' },
+    { id: 4, title: 'German words - Lektion 4' },
+    { id: 5, title: 'German words - Lektion 3' },
+    { id: 6, title: 'German words - Lektion 2' },
+    { id: 7, title: 'German words - Lektion 1' },
+    { id: 8, title: 'English - Unit 7' },
+    { id: 9, title: 'Chemistry definitions' },
   ];
 const app = createApp(App)
 app.config.globalProperties.$cards = cards;
-
 app.use(router);
 app.mount('#app')
 

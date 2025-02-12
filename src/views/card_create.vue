@@ -116,14 +116,14 @@ export default {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
-  color: white;
+  background-color: #9ebbbf;
+  color: rgb(0, 0, 0);
   border: none;
-  border-radius: 5px;
+  border-radius: 7px;
   cursor: pointer;
 }
 
 .add-btn:hover {
-  background-color: #0056b3;
+  background-color: #3c5f85;
 }
 </style>
