@@ -21,11 +21,12 @@
          <div class="incorrect">{{ incorrect }}</div> <span>-</span><div class="correct">{{ correct }}</div>
        </div>
       </div>
-      <div class="row">
-      <div class="succses"> 
-       <button type="button" class="btn btn-success" @click = deleteFirstElement >Success</button>
-      </div>  
-      <div class="carousel">
+      <div class="cardview" v-show="originalArray.length > 0">
+       <div class="row">
+       <div class="succses"> 
+        <button type="button" class="btn btn-success" @click = deleteFirstElement >Success</button>
+       </div>  
+       <div class="carousel">
        <!-- Slider Container -->
         <div class="carousel-container" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
           <!-- Slide-ek -->
@@ -65,15 +66,24 @@
       </div>
 
       <!-- Fixed Button -->
-      <button class="btn btn-info btn-fixed">Fixed Button</button>
+      <router-link to="/" class="btn btn-info btn-fixed">Menu</router-link>
+   </div>
   </div>
+  <div class="practiceview btn-center" v-show="originalArray.length == 0">
+    <button type="button" class="btn btn-danger" @click=practice >Practice</button>
+    <div class="circle">
+      <span>{{ 9000 }}%</span>
+    </div>
+   <!--<button @click="keepPracticing">Keep practicing</button> -->
+    <router-link to="/" class="btn btn-info btn-fixed">Menu</router-link>
+    </div>
  </body>
 </template>
 <!-- Vue JS -->
 <script lang="ts">
 import { CarouselPlugin } from 'bootstrap-vue';
 import {cards} from '../main';
-
+import cloneDeep from 'lodash/cloneDeep';
 export default {
  name: "Cardpage",
  
@@ -95,6 +105,7 @@ export default {
       sideB: 1,         // Content for side B
       correct: 0,
       incorrect: 0,
+      percentage: 0,
     };
   },
   methods: {
@@ -140,6 +151,17 @@ export default {
     flipCard() {
       this.isFlipped = !this.isFlipped;
     },
+    practice() {
+    // Temporarily store newArray in a variable (deep copy)
+    const temp = cloneDeep(newArray.value);
+
+    // Assign originalArray to newArray (deep copy)
+    newArray.value = cloneDeep(originalArray.value);
+
+    // Assign temp (old newArray) to originalArray (deep copy)
+    originalArray.value = temp;
+
+    }
   },
  };
   
