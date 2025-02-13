@@ -21,6 +21,8 @@
          <div class="incorrect">{{ incorrect }}</div> <span>-</span><div class="correct">{{ correct }}</div>
        </div>
       </div>
+  
+  <div class="practiceview" v-show="originalArray.length > 0">
       <div class="row align-items-center text-center">
   <!-- Bal oldali gomb (Success) -->
   <div class="col-3 col-lg-2 d-flex justify-content-center">
@@ -61,6 +63,7 @@
       <!-- Fixed Button -->
       <router-link to="/" class="btn btn-info btn-fixed">Menu</router-link>
    </div>
+  </div>
   </div>
   <div class="practiceview btn-center" v-show="originalArray.length == 0">
     <button type="button" class="btn btn-danger" @click= >Practice</button>
